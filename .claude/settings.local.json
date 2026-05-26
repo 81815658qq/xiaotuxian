@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git config *)",
+      "PowerShell(git config --global user.name)",
+      "PowerShell(git config --global user.email)",
+      "PowerShell(git config --global user.email \"81815658@qq.com\")",
+      "PowerShell(git config --global user.name \"q\")",
+      "PowerShell(gh --version)",
+      "Read(//c/Users/q/.ssh/**)",
+      "PowerShell(ssh-keygen -t ed25519 -C \"81815658@qq.com\" -f \"$env:USERPROFILE\\\\.ssh\\\\id_ed25519\" -N '\"\"')",
+      "PowerShell(winget install --id GitHub.cli --accept-source-agreements --accept-package-agreements 2>$null)",
+      "PowerShell(gh auth login --git-protocol ssh --web)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); gh auth login --git-protocol ssh --web)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); gh auth status)",
+      "PowerShell(git remote add github git@github.com:81815658qq/xiaotuxian.git)",
+      "PowerShell(git push -u github template)",
+      "PowerShell(git add src/manifest.json pnpm-workspace.yaml)",
+      "PowerShell(git commit -m \"chore: ���� manifest ���ü� pnpm ������\")",
+      "PowerShell(git push github template)"
+    ]
+  }
+}
