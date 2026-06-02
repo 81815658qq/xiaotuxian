@@ -163,3 +163,32 @@ BannerItem[] 数组（推荐） 多个轮播图组成的列表（你的场景）
    接收规范：const props = defineProps<{ list: BannerItem[] }>()
 
    使用数据：在模板中通过 list 直接遍历，或者通过 props.list 在 JS 中逻辑处理。
+
+### day2-08 :
+
+关于类型：
+
+1.  src\types\home.d.ts 里去增加接口的类型 CategoryItem
+2.  src\services\home.ts 定义 http 接口时,写入类型：
+
+```
+export const getHomeCategoryApi = () => {
+  return http<CategoryItem[]>({
+    method: 'GET',
+    url: '/home/category/mutli',
+  })
+}
+
+```
+
+3. src\pages\index\index.vue 调用时 ref<CategoryItem[]>
+
+```
+// 获取前台分类数据
+const categoryList = ref<CategoryItem[]>([])
+const getHomeCategoryData = async () => {
+  const res = await getHomeCategoryApi()
+  categoryList.value = res.result
+  // console.log('前台分类数据:', categoryList.value)
+}
+```

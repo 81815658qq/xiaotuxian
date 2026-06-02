@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import XtxSwiper from '@/components/XtxSwiper.vue'
 import CustomNavbar from './components/CustomNavbar.vue'
-import { getHomeBannerApi } from '@/services/home'
+import { getHomeBannerApi, getHomeCategoryApi } from '@/services/home'
 import { onLoad } from '@dcloudio/uni-app'
-import type { BannerItem } from '@/types/home'
+import type { BannerItem, CategoryItem } from '@/types/home'
 import { ref } from 'vue'
 import CategoryPanel from './components/CategoryPanel.vue'
 
+// 获取轮播图数据
 const bannerList = ref<BannerItem[]>([])
 const getHomeBannerData = async () => {
   const res = await getHomeBannerApi()
@@ -14,8 +15,17 @@ const getHomeBannerData = async () => {
   // console.log('轮播图数据:', bannerList.value)
 }
 
+// 获取前台分类数据
+const categoryList = ref<CategoryItem[]>([])
+const getHomeCategoryData = async () => {
+  const res = await getHomeCategoryApi()
+  categoryList.value = res.result
+  // console.log('前台分类数据:', categoryList.value)
+}
+
 onLoad(() => {
   getHomeBannerData()
+  getHomeCategoryData()
 })
 </script>
 
@@ -24,7 +34,7 @@ onLoad(() => {
   <CustomNavbar />
   <!--轮播图-->
   <XtxSwiper :list="bannerList" />
-  <CategoryPanel />
+  <CategoryPanel :list="categoryList" />
 
   <view class="index">index</view>
 </template>
