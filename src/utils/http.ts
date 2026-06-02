@@ -6,7 +6,7 @@ const httpInterceptor = {
     if (!options.url.startsWith('http')) {
       options.url = baseURl + options.url
     }
-    options.timeout = 10000
+    options.timeout = 30000
 
     options.header = {
       ...options.header,
@@ -18,7 +18,8 @@ const httpInterceptor = {
       options.header.Authorization = token
     }
 
-    console.log('请求被拦截了', options)
+    // console.log('请求被拦截了', options)
+    return options
   },
 }
 
