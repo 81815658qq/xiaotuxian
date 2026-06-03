@@ -1,5 +1,5 @@
 import { http } from '@/utils/http'
-import type { BannerItem, CategoryItem } from '@/types/home'
+import type { BannerItem, CategoryItem, HotItem } from '@/types/home'
 /**
  * v1.0.0 首页轮播图接口
  * @param distributionSite 广告区域展示位置 1 为首页（默认值） 2 为商品分类页
@@ -24,5 +24,15 @@ export const getHomeCategoryApi = () => {
   return http<CategoryItem[]>({
     method: 'GET',
     url: '/home/category/mutli',
+  })
+}
+
+/**
+ * 首页-热门推荐-小程序
+ */
+export const getHomeHotAPI = () => {
+  return http<HotItem[]>({
+    method: 'GET',
+    url: '/home/hot/mutli',
   })
 }
